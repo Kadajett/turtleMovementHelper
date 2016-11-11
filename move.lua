@@ -4,22 +4,22 @@ local move = {}
 local cardinal = 0
 
 move.history = {}
-turtle = {}
-function turtle.turnLeft()
- print('Turtle turning left')
- return true
-end
-function turtle.turnRight()
- print('Turtle turning Right')
- return true
-end
-function turtle.forward()
- print('Turtle moving forward')
- return true
-end
-function turtle.detect()
-return false
-end
+-- turtle = {}
+-- function turtle.turnLeft()
+--  print('Turtle turning left')
+--  return true
+-- end
+-- function turtle.turnRight()
+--  print('Turtle turning Right')
+--  return true
+-- end
+-- function turtle.forward()
+--  print('Turtle moving forward')
+--  return true
+-- end
+-- function turtle.detect()
+-- return false
+-- end
 -- Utils
 
 local function turtleExists(success, error)
