@@ -1,5 +1,8 @@
 local move = {}
 
+-- cardinal is the four directions. Each turn will change this. 0=north, 1=east, 2=south, 3=west
+local cardinal = 0
+
 move.history = {}
 turtle = {}
 function turtle.turnLeft()
@@ -26,6 +29,50 @@ local function turtleExists(success, error)
   return error()
 end
 
+function cardinalRight()
+
+  if cardinal < 3 then
+    cardinal = cardinal + 1
+  else
+    cardinal = 0
+  end
+  callCardinal()
+end
+
+
+
+function cardinalLeft()
+
+  if cardinal > 0 then
+    cardinal = cardinal - 1
+  else
+    cardinal = 3
+  end
+  callCardinal()
+end
+
+function callCardinal()
+
+  if cardinal == 0 then
+    print('cardinal: north');
+  end
+
+  if cardinal == 1 then
+    print('cardinal: east');
+  end
+
+  if cardinal == 2 then
+    print('cardinal: south')
+  end
+
+  if cardinal == 3 then
+    print('cardinal: west')
+  end
+
+end
+
+callCardinal()
+
 -- End Utils
 
 -- Turns
@@ -33,9 +80,11 @@ end
 function move.turnLeft(rots)
 
   local function tl()
+
     local turtle = turtle or {} -- This wont be used, but it prevents errors while debugging
     local didTurn = nil
     for i=1, rots do
+      cardinalLeft()
       didTurn = turtle.turnLeft()
 
     end
@@ -44,6 +93,7 @@ function move.turnLeft(rots)
 
   local function fTL()
     for i=1, rots do
+      cardinalLeft()
       print('Fake turnLeft')
     end
     return true
@@ -59,6 +109,7 @@ function move.turnRight(rots)
     local turtle = turtle or {} -- This wont be used, but it prevents errors while debugging
     local didTurn = nil
     for i=1, rots do
+      cardinalRight()
       didTurn = turtle.turnRight()
 
     end
@@ -68,6 +119,7 @@ function move.turnRight(rots)
 
   local function fTR()
     for i=1, rots do
+      cardinalRight()
       print('Fake turnRight')
     end
     return true
@@ -126,15 +178,10 @@ function move.left(spaces)
 end
 
 function move.right(spaces)
-
+  move.turnRight(1)
+  move.forward(spaces)
+  move.turnLeft(1)
 end
 -- End Movements
-
-move.turnRight(3)
-move.turnLeft(2)
-move.turnRight(3)
-move.backward(3)
-move.left(4)
-
 
 return move
