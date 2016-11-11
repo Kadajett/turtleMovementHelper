@@ -184,7 +184,8 @@ function move.right(spaces)
 end
 
 function move.up(spaces)
- local function mU()
+ local turtle = turtle or {}
+  local function mU()
    for i=1, spaces do 
      turtle.up() 
    end
@@ -199,6 +200,7 @@ function move.up(spaces)
 end
 
 function move.down(spaces)
+  local turtle = turtle or {}
  local function mU()
    for i=1, spaces do 
      turtle.down() 
