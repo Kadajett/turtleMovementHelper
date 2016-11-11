@@ -182,6 +182,39 @@ function move.right(spaces)
   move.forward(spaces)
   move.turnLeft(1)
 end
+
+function move.up(spaces)
+ local function mU()
+   for i=1, spaces do 
+     turtle.up() 
+   end
+ end
+ 
+ local function fMU()
+   for i=1, spaces do
+     print("fake move up")
+   end
+ end
+ return turtleExists(mU, fMU)
+end
+
+function move.down(spaces)
+ local function mU()
+   for i=1, spaces do 
+     turtle.down() 
+   end
+ end
+ 
+ local function fMU()
+   for i=1, spaces do
+     print("fake move down")
+   end
+ end
+ return turtleExists(mU, fMU)
+end
 -- End Movements
+
+move.up(3)
+
 
 return move
