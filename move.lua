@@ -215,6 +215,9 @@ end
 -- End Movements
 
 move.up(3)
+move.forward(3)
+move.backward(3)
+move.down(3)
 
 
 return move
