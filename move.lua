@@ -129,6 +129,8 @@ function move.turnRight(rots)
 
 end
 
+move.turnCardinal
+
 -- End Turns
 
 -- Movements
